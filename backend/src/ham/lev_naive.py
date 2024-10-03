@@ -4,7 +4,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, classification_report
 
 # Load the dataset
-data = pd.read_csv(r"C:\Users\Hamid\Dokumen\GitHub\ProstCheck\backend\csv\ke1.csv") # bisa di sesuaikan ya
+data = pd.read_csv(r"C:\Users\Hamid\OneDrive\Dokumen\GitHub\ProstCheck\backend\csv\ke1.csv")
 
 # 1. Map the diagnosis_result to numerical values: 'M' -> 1, 'B' -> 0
 data['diagnosis_result'] = data['diagnosis_result'].map({'M': 1, 'B': 0})
@@ -17,7 +17,18 @@ data[numeric_columns] = data[numeric_columns].fillna(data[numeric_columns].mean(
 Q1 = data[numeric_columns].quantile(0.25)
 Q3 = data[numeric_columns].quantile(0.75)
 IQR = Q3 - Q1
-data = data[~((data[numeric_columns] < (Q1 - 1.5 * IQR)) | (data[numeric_columns] > (Q3 + 1.5 * IQR))).any(axis=1)]
+outliers = data[((data[numeric_columns] < (Q1 - 1.5 * IQR)) | (data[numeric_columns] > (Q3 + 1.5 * IQR))).any(axis=1)]
+
+# Print outliers
+print("Outliers detected:")
+print(outliers)
+
+# Replace outliers with median
+for col in numeric_columns:
+    median = data[col].median()
+    median = median.astype(data[col].dtype)  # Cast median to the same dtype as the column
+    data.loc[data[col] < (Q1[col] - 1.5 * IQR[col]), col] = median
+    data.loc[data[col] > (Q3[col] + 1.5 * IQR[col]), col] = median
 
 # 4. Scaling the feature set (Simple Feature Scaling)
 X = data.drop(columns=['id', 'diagnosis_result'])
