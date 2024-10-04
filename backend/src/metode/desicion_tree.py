@@ -7,7 +7,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # 1. Membaca Dataset
-df_normalized = pd.read_csv('csv_clean_normalisasi/data_normalized.csv')  # Ganti dengan nama file CSV normalisasi
+df_normalized = pd.read_csv('backend/csv_clean_normalisasi/normalisasiProstateCancerClean.csv')  # Ganti dengan nama file CSV normalisasi
 print(df_normalized.head())
 
 # 2. Memisahkan Fitur dan Target 
@@ -16,10 +16,10 @@ X = df_normalized.drop(columns=['id', 'diagnosis_result'])
 y = df_normalized['diagnosis_result']
 
 # Membagi data menjadi data latih dan data uji
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
 # Membuat model Decision Tree
-model = DecisionTreeClassifier(random_state=42)
+model = DecisionTreeClassifier(random_state=0)
 model.fit(X_train, y_train)
 
 # Melakukan prediksi
