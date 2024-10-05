@@ -65,13 +65,16 @@ def predict_new_data():
     # Predict the result using all models
     predictions = {}
     for name, model in models.items():
-        prediction = model.predict(new_data_scaled)
-        result = 'M' if prediction[0] == 1 else 'B'
-        predictions[name] = result
-        print(f"\nPrediction by {name}: {result}")
+        try:
+            prediction = model.predict(new_data_scaled)
+            result = 'M' if prediction[0] == 1 else 'B'
+            predictions[name] = result
+            print(f"\nPrediction by {name}: {result}")
+        except Exception as e:
+            print(f"Error predicting with {name}: {e}")
     
     # Final prediction using the best model
-    final_prediction = predictions[best_model_name]
+    final_prediction = predictions.get(best_model_name, "No prediction")
     print(f"\n=== Final Prediction (using {best_model_name}) ===")
     print(f"The predicted diagnosis result is: {final_prediction}")
 
