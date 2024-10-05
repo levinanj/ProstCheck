@@ -17,6 +17,11 @@ def home():
 def prediction():
     if request.method == 'POST':
         # Ambil data dari form
+        nama = request.form['name']
+        berat_badan = request.form['weight']
+        tinggi_badan = request.form['height']
+        umur = request.form['age']
+        
         input_data = {
             'radius': float(request.form['radius']),
             'texture': float(request.form['texture']),
@@ -32,10 +37,14 @@ def prediction():
         prediction_result = predict_diagnosis(best_model, input_data, max_values)
 
         # Interpretasi hasil prediksi
-        diagnosis = 'Malignant' if prediction_result == 1 else 'Benign'
-
+        # diagnosis = 'Malignant' if prediction_result == 1 else 'Benign'
+        diagnosis = prediction_result
         # Redirect ke halaman hasil prediksi dengan membawa input data dan hasil diagnosis
         return redirect(url_for('hasil_prediksi', 
+                                nama = nama,
+                                berat_badan = berat_badan,
+                                tinggi_badan = tinggi_badan,
+                                umur = umur,
                                 diagnosis=diagnosis, 
                                 radius=input_data['radius'],
                                 texture=input_data['texture'],
@@ -52,7 +61,10 @@ def prediction():
 
 @app.route('/hasil_prediksi', methods=['GET'])
 def hasil_prediksi():
-  
+    nama = request.args.get('nama')
+    berat_badan = request.args.get('berat_badan')
+    tinggi_badan = request.args.get('tinggi_badan')
+    umur = request.args.get('umur')
     diagnosis = request.args.get('diagnosis')
     radius = request.args.get('radius')
     texture = request.args.get('texture')
@@ -63,7 +75,12 @@ def hasil_prediksi():
     symmetry = request.args.get('symmetry')
     fractal_dimension = request.args.get('fractal_dimension')
 
-    return render_template('submit.html', diagnosis=diagnosis, 
+    return render_template('submit.html',
+                           nama = nama,
+                            berat_badan = berat_badan,
+                            tinggi_badan = tinggi_badan,
+                            umur = umur,
+                           diagnosis=diagnosis, 
                            radius=radius, texture=texture, 
                            perimeter=perimeter, area=area, 
                            smoothness=smoothness, compactness=compactness, 

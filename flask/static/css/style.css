@@ -465,7 +465,26 @@ body.dark .loader_line:after{
 	width: auto;
 	margin-left: 30px;
 }
+
 .iknow_tm_button a{
+	text-decoration: none;
+	color: #fff;
+	font-size: 16px;
+	text-transform: uppercase;
+	font-weight: 600;
+	display: inline-block;
+	background-color: #00004d;
+	padding: 14px 50px;
+	border-radius: 10px;
+	white-space: nowrap;
+	
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.iknow_tm_button button{
 	text-decoration: none;
 	color: #fff;
 	font-size: 16px;
