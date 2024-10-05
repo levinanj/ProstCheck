@@ -6,21 +6,26 @@ from sklearn.metrics import confusion_matrix, classification_report, accuracy_sc
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# Dataset
-df_normalized = pd.read_csv('backend/csv_clean_normalisasi/normalisasiProstateCancerClean.csv') 
+# Dataset yang dinormalisasi untuk model
+df_normalized = pd.read_csv('csv_clean_normalisasi/prostateCancerCleanNormalisasi.csv') 
 print(df_normalized.head())
 
+# Dataset yang belum dinormalisasi untuk mengambil nilai maksimum
+df_cleaned = pd.read_csv('csv_clean_normalisasi/prostateCancerClean.csv') 
+print(df_cleaned.head())
 
-#Bagi X dan y label
+# Ambil nilai maksimum dari kolom numerik
+max_values = df_cleaned.drop(columns=['id', 'diagnosis_result']).max()
+
+# Bagi X dan y label dari dataset yang dinormalisasi
 X = df_normalized.drop(columns=['id', 'diagnosis_result'])
 y = df_normalized['diagnosis_result']
 
+# Bagi data menjadi data latih dan data uji
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-#Bagi data menjadi data latih dan data uji
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
-
-#  Model Random Forest
-model = RandomForestClassifier(n_estimators=100, random_state=0)
+# Model Random Forest
+model = RandomForestClassifier(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
 
 # Memprediksi Kelas pada Data Uji
@@ -51,7 +56,6 @@ print(f'F1 Score: {f1 * 100:.2f}%')
 
 print('\nClassification Report:\n', classification_report(y_test, y_pred))
 
-
 # Fungsi untuk menerima input pengguna dan memprediksi hasil diagnosa
 def user_input_prediction():
     print("\nMasukkan data pasien untuk melakukan diagnosa:")
@@ -66,26 +70,30 @@ def user_input_prediction():
     symmetry = float(input("Masukkan nilai symmetry: "))
     fractal_dimension = float(input("Masukkan nilai fractal_dimension: "))
     
-    # Membuat DataFrame dari input pengguna
+    # Normalisasi input pengguna dengan nilai maksimum yang telah disimpan
     user_data = pd.DataFrame({
-        'radius': [radius],
-        'texture': [texture],
-        'perimeter': [perimeter],
-        'area': [area],
-        'smoothness': [smoothness],
-        'compactness': [compactness],
-        'symmetry': [symmetry],
-        'fractal_dimension': [fractal_dimension]
+        'radius': [radius / max_values['radius']],
+        'texture': [texture / max_values['texture']],
+        'perimeter': [perimeter / max_values['perimeter']],
+        'area': [area / max_values['area']],
+        'smoothness': [smoothness / max_values['smoothness']],
+        'compactness': [compactness / max_values['compactness']],
+        'symmetry': [symmetry / max_values['symmetry']],
+        'fractal_dimension': [fractal_dimension / max_values['fractal_dimension']]
     })
     
+    print(user_data)
     # Melakukan prediksi berdasarkan input pengguna
     prediction = model.predict(user_data)
     
     # Memberikan hasil diagnosis
-    if prediction[0] == 'M':
-        print("\nHasil Diagnosa: Positif (Kanker)")
+    if prediction[0] == 1:
+        print("\nMalignant")
+        print("prediksi: M", prediction[0])
+        print("\nM")
     else:
-        print("\nHasil Diagnosa: Negatif (Tidak ada Kanker)")
+        print("prediksi: B", prediction[0])
+        print("\n B")
 
 # Memanggil fungsi input prediksi pengguna
 user_input_prediction()

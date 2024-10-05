@@ -7,17 +7,17 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 input_file_path_normalized = r"csv_clean_normalisasi/prostateCancerCleanNormalisasi.csv" # Path file hasil normalisasi
 
 # Load the normalized dataset from Excel
-data_normalized = pd.read_excel(input_file_path_normalized)
+data_normalized = pd.read_csv(input_file_path_normalized)
 
 # 2. Pisahkan fitur (X) dan target (y)
 X = data_normalized.drop(columns=['diagnosis_result', 'id'])  # 'id' bisa di-drop
 y = data_normalized['diagnosis_result']
 
 # 3. Bagi dataset menjadi data latih dan data uji (80% latih, 20% uji)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # 4. Buat dan latih model Random Forest
-model_rf = RandomForestClassifier(random_state=0)
+model_rf = RandomForestClassifier(random_state=42)
 model_rf.fit(X_train, y_train)
 
 # 5. Prediksi menggunakan data uji

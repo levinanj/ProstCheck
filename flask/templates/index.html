@@ -1,193 +1,295 @@
 <!DOCTYPE html>
-<html lang="zxx">
-   <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-      <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
-      <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-      <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/bootstrap.min.css') }}">
-      <link rel="stylesheet" href="{{ url_for('static', filename='css/super-classes.css') }}">
-      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-      <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile.css') }}">
-      <link rel="icon" href="{{ url_for('static', filename='image/icon.png') }}">
-      <title>ProstCheck</title>
-   </head>
-   <body><!---header-and-banner-section-->
-      <div class="header-and-banner-con w-100 float-left position-relative">
-         <div class="header-and-banner-inner-con">
-            <header class="main-header">
-               <!--navbar-start-->
-               <div class="container pl-0 pr-0">
-                  <div class="header-con">
-                     <nav class="navbar navbar-expand-lg navbar-light p-0">
-                        <a class="navbar-brand p-0" href="index.html">
-                           <img src="{{url_for('static' ,filename='image/logoo.png')}}" alt="logo-img" class="img-fluid" style="width: 150px; height: auto;">
-                        </a>
-                        <button class="navbar-toggler p-0 collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                        <span class="navbar-toggler-icon"></span>
-                        <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                           
-                           <div class="d-inline-block contact">
-                              <a href="#Contact">Diagnosa</a>
-                           </div>
-                        </div>
-                     </nav>
-                  </div>
-               </div>
-               <!--navbar-end-->
-            </header>
-            <section class="banner-main-con" id="home">
-               <div class="container pl-0 pr-0">
-                  <!--banner-start-->
-                  <div class="banner-con d-flex align-items-center justify-content-center text-lg-left text-center" style="height: 80vh;">
-                     <div class="row w-100">
-                        <div class="col-lg-7 col-sm-12 d-flex justify-content-center flex-column">
-                           <div class="banner-left-con wow slideInLeft">
-                              <div class="banner-heading">
-                                 <ul class="dynamic-txts">
-                                    <li><h1>Welcome</h1></li>
-                                 </ul>
-                                 <p>ProstCheck - a smart system designed to help diagnose<br>
-                                    prostate cancer early and accurately
-                                 </p>
-                              </div>
-                              <div class="banner-btn generic-btn d-inline-block">
-                                 <a href="#Contact">Cek Diagnosa</a>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-lg-5 col-sm-12">
-                           <div class="banner-right-con position-relative wow slideInRight" id="banner-right-con">
-                              <figure class="mb-0">
-                                 <img src="{{url_for('static', filename='image/rs.jpg') }}" alt="banner-right-img" id="banner-right-img">
-                              </figure>
-                              <div class="cursor"></div>
-                              <div class="cursor2"></div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <!--banner-end-->
-               </div>
-            </section>
-         </div>
-      </div>
-      <!---header-and-banner-section-->
-      <!-- form section -->
-      <section class="w-100 float-left form-main-con padding-top padding-bottom" id="Contact">
-         <div class="container">
-            <div class="form-main-inner-con position-relative">
-               <div class="generic-title text-center">
-                     <h2 class="mb-0">Cek Diagnosa Kanker Prostat<br></h2>
-               </div>
-               <div class="row" id="formContainer">
-                     <div class="col-lg-12">
-                        <div id="form_result"></div>
-                        <form id="contactpage" method="POST" class="contact-form wow slideInRight text-lg-left text-center" onsubmit="return handleSubmit(event)">
-                           <div class="row">
-                                 <div class="col-lg-6">
-                                    <div class="form-group mb-0">
-                                       <input type="text" placeholder="Nama Pasien" name="name" id="name" autocomplete="off" required>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-6">
-                                    <div class="form-group mb-0">
-                                       <input type="email" id="emailHelp" name="emailHelp" placeholder="Berat Badan" autocomplete="off" required>
-                                       <small class="form-text text-muted"></small>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-6">
-                                    <div class="form-group mb-0">
-                                       <input type="tel" placeholder="Usia" name="phone" id="phone" required>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-6">
-                                    <div class="form-group mb-0">
-                                       <input type="text" name="subject" placeholder="Tinggi Badan" id="subject">
-                                    </div>
-                                 </div>
-                           </div>
-                           <div class="text-center">
-                                 <button type="submit" id="submit" class="appointment-btn">Lanjutkan</button>
-                           </div>
-                        </form>
-                     </div>
-                     <!-- New form structure placed directly below the old one -->
-                     <div class="col-lg-12" id="newFormContainer" style="display: none;">
-                        <form class="contact-form wow slideInRight text-lg-left text-center" id="newContactForm" onsubmit="return handleNewFormSubmit(event)">
-                           <div class="row">
-                                 <div class="col-lg-6">
-                                    <div class="form-group mb-0">
-                                       <input type="text" placeholder="Lingkar Radius" name="radius" autocomplete="off" required>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-6">
-                                    <div class="form-group mb-0">
-                                       <input type="text" placeholder="Tekstur" autocomplete="off" required>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-6">
-                                    <div class="form-group mb-0">
-                                       <input type="tel" placeholder="Perimeter" name="perimeter" required>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-6">
-                                    <div class="form-group mb-0">
-                                       <input type="text" name="area" placeholder="Luas Area">
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-6">
-                                    <div class="form-group mb-0">
-                                       <input type="tel" placeholder="Kelembutan" name="softness" required>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-6">
-                                    <div class="form-group mb-0">
-                                       <input type="text" name="density" placeholder="Kepadatan">
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-6">
-                                    <div class="form-group mb-0">
-                                       <input type="tel" placeholder="Simetri" name="symmetry" required>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-6">
-                                    <div class="form-group mb-0">
-                                       <input type="text" name="fractalDimension" placeholder="Dimensi Fraktal">
-                                    </div>
-                                 </div>
-                           </div>
-                           <div class="text-center">
-                                 <button type="submit" class="appointment-btn">Cek Hasil</button>
-                           </div>
-                        </form>
-                     </div>
-               </div>
-            </div>
-         </div>
-      </section>
-      <!-- form section -->
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 
-      <script>
-         function handleSubmit(event) {
-            event.preventDefault(); // Prevent default form submission
+<head>
 
-            // Hide the original form
-            document.getElementById('contactpage').style.display = 'none';
-            
-            // Show the new form
-            document.getElementById('newFormContainer').style.display = 'block';
-         }
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-         function handleNewFormSubmit(event) {
-            event.preventDefault(); // Prevent default form submission
+<meta name="description" content="Name of your web site">
+<meta name="author" content="Marketify">
 
-            // Redirect to submit.html
-            window.location.href = 'submit.html';
-         }
-      </script>
-   </body>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="icon" href="{{url_for('static', filename='img/icon.png')}}">
+
+<title>ProstCheck</title>
+
+<!-- STYLES -->
+<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/plugins.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/dark.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}" />
+<!--<link rel="stylesheet" type="text/css" href="css/dark.css" />-->
+<!--[if lt IE 9]> <script type="text/javascript" src="js/modernizr.custom.js"></script> <![endif]-->
+<!-- /STYLES -->
+
+</head>
+
+<body> 
+	
+	<!-- PRELOADER -->
+	<div id="preloader">
+		<div class="loader_line"></div>
+	</div>
+	<!-- /PRELOADER -->
+	
+<!-- WRAPPER ALL -->
+<!--<div class="iknow_tm_all_wrap" data-magic-cursor="show" data-animation-in="rotateInDownLeft" data-animation-out="rotateOutDownLeft"> -->
+<div class="iknow_tm_all_wrap" data-magic-cursor="show" data-animation-in="zoomIn" data-animation-out="zoomOut">
+<!-- If you want disable magic cursor change value to "hide" -->	
+	
+	<!-- MODALBOX -->
+	<div class="iknow_tm_modalbox">
+		<div class="box_inner">
+			<div class="close">
+				<a href="#"><img class="svg" src="{{url_for('static', filename='img/svg/cancel.svg')}}" alt="" /></a>
+			</div>
+			<div class="description_wrap"></div>
+		</div>
+	</div>
+	<!-- /MODALBOX -->
+	
+	<div class="iknow_tm_extra_demo">
+	
+		<span class="top_shape"></span>
+		
+	
+		<div class="background_part">
+			<!-- Hero Shapes -->
+			<div class="rounded_shapes">
+				<span class="one anim_circle"><img class="svg" src="{{url_for('static',filename='img/svg/shapes/11.svg')}}" alt="" /></span>
+				<span class="two anim_scale2"><img class="svg" src="{{url_for('static', filename='img/svg/shapes/10.svg')}}" alt="" /></span>
+				<span class="three anim_scale2"><img class="svg" src="{{url_for('static',filename='img/svg/shapes/6.svg')}}" alt="" /></span>
+				<span class="four anim_scale2"><img class="svg" src="{{url_for('static',filename='img/svg/shapes/6.svg')}}" alt="" /></span>
+				<span class="five anim_circle"><img class="svg" src="{{url_for('static',filename='img/svg/shapes/11.svg')}}" alt="" /></span>
+				<span class="six anim_scale2"><img class="svg" src="{{url_for('static', filename='img/svg/shapes/10.svg')}}" alt="" /></span>
+				<span class="seven anim_scale2"><img class="svg" src="{{url_for('static',filename='img/svg/shapes/6.svg')}}" alt="" /></span>
+				<span class="eight anim_scale2"><img class="svg" src="{{url_for('static', filename='img/svg/shapes/10.svg')}}" alt="" /></span>
+				<span class="nine anim_scale2"><img class="svg" src="{{url_for('static',filename='img/svg/shapes/6.svg')}}" alt="" /></span>
+				<span class="ten anim_scale2"><img class="svg" src="{{url_for('static', filename='img/svg/shapes/10.svg')}}" alt="" /></span>
+				<span class="eleven anim_circle"><img class="svg" src="{{url_for('static',filename='img/svg/shapes/11.svg')}}" alt="" /></span>
+				<span class="twelve anim_circle"><img class="svg" src="{{url_for('static',filename='img/svg/shapes/11.svg')}}" alt="" /></span>
+				<span class="thirteen anim_scale2"><img class="svg" src="{{url_for('static',filename='img/svg/shapes/6.svg')}}" alt="" /></span>
+				<span class="fourteen anim_circle"><img class="svg" src="{{url_for('static',filename='img/svg/shapes/11.svg')}}" alt="" /></span>
+				<span class="fifteen anim_scale2"><img class="svg" src="{{url_for('static',filename='img/svg/shapes/6.svg')}}" alt="" /></span>
+				<span class="sixteen anim_scale2"><img class="svg" src="{{url_for('static', filename='img/svg/shapes/10.svg')}}" alt="" /></span>
+				<span class="seventeen anim_scale2"><img class="svg" src="{{url_for('static', filename='img/svg/shapes/10.svg')}}" alt="" /></span>
+				<span class="eighteen anim_scale2"><img class="svg" src="{{url_for('static', filename='img/svg/shapes/10.svg')}}" alt="" /></span>
+			</div>
+			<!-- /Hero Shapes -->
+		</div>
+			
+		
+	
+		
+		<!-- TOPBAR -->
+		<div class="iknow_tm_topbar onepage">
+			<div class="topbar_inner">
+				<div class="logo">
+					<a href="#"><img src="{{url_for('static', filename='img/logoo.png')}}" alt="" /></a>
+				</div>
+			</div>
+		</div>
+		<!-- /TOPBAR -->
+		
+		<!-- MOBILE MENU -->
+		<div class="iknow_tm_mobile_menu">
+			<div class="mobile_menu_inner">
+				<div class="mobile_in">
+					<div class="logo">
+						<a href="#"><img src="{{url_for('static', filename='img/logoo.png')}}" alt="" /></a>
+					</div>
+					<div class="trigger">
+						<div class="hamburger hamburger--slider">
+							<div class="hamburger-box">
+								<div class="hamburger-inner"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="dropdown">
+				<div class="dropdown_inner">
+					<ul class="anchor_nav">
+						<li class="current"><a href="#home">Home</a></li>
+						<li><a href="#contact">Diagnosa</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- /MOBILE MENU -->
+		
+		<!-- SIDEBAR -->
+		<div class="iknow_tm_sidebar_3">
+			<div class="inner">
+				<div class="image">
+					<div class="main" data-img-url="https://media.istockphoto.com/id/1156352527/id/foto/ujian-kesehatan-pria-dengan-dokter-atau-psikiater-yang-bekerja-dengan-pasien-memiliki.jpg?b=1&s=612x612&w=0&k=20&c=Helj_eCbGUO8kFvRO_CMvFDoxmHqzxq4Yzih4yeX5oc="></div>
+				</div>
+				<div class="menu scrollable">
+					<ul class="anchor_nav">
+						<li class="current">
+							<img class="svg" src="{{url_for('static', filename='img/svg/squares.svg')}}" alt="" />
+							<span>Home</span>
+							<a class="iknow_tm_full_link" href="#home"></a>
+						</li>
+						<li>
+							<img class="svg" src="{{url_for('static', filename='img/svg/letter.svg')}}" alt="" />
+							<span>Diagnosa</span>
+							<a class="iknow_tm_full_link" href="#contact"></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- /SIDEBAR -->
+		
+		<!-- MAINPART -->
+		
+		<div class="iknow_tm_content_wrapper">
+			<!-- HERO -->
+			<div class="iknow_tm_hero_third" id="home">
+				<div class="background">
+					<div class="image" data-img-url="{{url_for('static', filename='img/hero/8.jpg')}}"></div>
+					<div class="overlay"></div>
+				</div>
+				<div class="content">
+					<h3 class="name">Selamat Datang</h3>
+					<p class="text">ProstCheck - Diagnose prostate cancer early and accurately</p>
+				</div>
+				
+			</div>
+			<!-- /HERO -->
+			
+
+			<!-- CONTACT -->
+			<div class="iknow_tm_section_new contact" id="contact">
+				<div class="iknow_tm_contact">
+					<div class="iknow_tm_main_title">
+						<h3>BIODATA PASIEN</h3>
+					</div>
+					<div class="wrapper">
+						
+						<div class="right">
+							<div class="fields">
+									<form action="/prediction" method = "POST"> 
+									<div class="contact_form" id="contact_form">  
+									<div class="returnmessage" data-success="Your message has been received, We will contact you soon."></div>
+									<div class="empty_notice"><span>Isi Biodata Pasien</span></div>
+									<div class="input_list">
+										<ul>
+											<li><input id="name" type="text" name="name" placeholder="Nama Lengkap" required /></li>
+											<li><input id="weight" type="text" name="weight" placeholder="Berat Badan" required /></li>
+											<li><input id="age" type="number" name="age" placeholder="Usia" required /></li>
+											<li><input id="height" type="text" name="height" placeholder="Tinggi Badan" required /></li>
+										</ul>
+									</div>
+									<div class="iknow_tm_button">
+										<a id="send_message" href="#">Lanjutkan</a>
+									</div>
+								</div>
+							
+								<!-- Form Kedua -->
+									<div class="contact_form form-hidden" id="second_form"> 
+									<div class="returnmessage" data-success="Form kedua telah dikirim."></div>
+									<div class="input_list">
+										<ul>
+											<li><input id="name" name="radius" type="text" placeholder="Lingkar Radius" required /></li>
+											<li><input id="name" name="texture" type="text" placeholder="Tekstur" required /></li>
+											<li><input id="name" name="perimeter" type="text" placeholder="Perimeter" required /></li>
+											<li><input id="name" name="area" type="text" placeholder="Luas Area" required /></li>
+											<li><input id="name" name="smoothness" type="text" placeholder="Kelembutan" required /></li>
+											<li><input id="name" name="compactness" type="text" placeholder="Kepadatan" required /></li>
+											<li><input id="name" name="symmetry" type="text" placeholder="Simetri" required /></li>
+											<li><input id="name" name="fractal_dimension" type="text" placeholder="Dimensi Fraktal" required /></li>
+										</ul>
+									</div>
+									<div class="iknow_tm_button">
+										<a id="back_button" >Kembali</a>
+									</div>
+									<div class="iknow_tm_button" >
+										<button id="submit" type="submit">Submit</button>
+									</div>
+								</div>
+								</form>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /CONTACT -->
+			
+			<!-- COPYRIGHT -->
+			<div class="iknow_tm_copyright onepage extra">
+				<div class="inner">
+					<div class="left">
+						<p></a></p>
+					</div>
+					<div class="right">
+						<ul>
+							<li><a href="#"></a></li>
+							<li><a href="#"></a></li>
+							<li><a href="#"></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<span class="bottom_shape"></span>
+			<!-- /COPYRIGHT -->
+			
+		</div>
+		
+		<!-- /MAINPART -->
+		
+	</div>
+	
+	<!-- MAGIC CURSOR -->
+	<div class="mouse-cursor cursor-outer"></div>
+	<div class="mouse-cursor cursor-inner"></div>
+	<!-- /MAGIC CURSOR -->
+		
+</div>
+<!-- / WRAPPER ALL -->
+	
+<!-- SCRIPTS -->
+<script>
+	// Mendapatkan elemen form
+	const firstForm = document.getElementById('contact_form');
+	const secondForm = document.getElementById('second_form');
+	const sendMessageButton = document.getElementById('send_message');
+	const backButton = document.getElementById('back_button');
+
+	// Menangani klik tombol Lanjutkan pada form pertama
+	sendMessageButton.addEventListener('click', function(event) {
+		event.preventDefault(); // Mencegah pengiriman form
+
+		// Sembunyikan form pertama dan tampilkan form kedua
+		firstForm.classList.add('form-hidden');
+		secondForm.classList.remove('form-hidden');
+	});
+
+	// Menangani klik tombol Kembali pada form kedua
+	backButton.addEventListener('click', function() {
+		// Sembunyikan form kedua dan tampilkan form pertama
+		secondForm.classList.add('form-hidden');
+		firstForm.classList.remove('form-hidden');
+	});
+</script>
+<script src="{{url_for('static', filename='js/jquery.js')}}"></script>
+<!--[if lt IE 10]> <script type="text/javascript" src="js/ie8.js"></script> <![endif]-->	
+<script src="{{url_for('static',filename='js/plugins.js')}}"></script>
+<script src="{{url_for('static',filename='js/init.js')}}"></script>
+<!-- /SCRIPTS -->
+
+<style>
+	/* Sembunyikan form kedua secara default */
+	.form-hidden {
+		display: none;
+	}
+</style>
+</body>
 </html>
