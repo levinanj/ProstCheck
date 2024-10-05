@@ -1,6 +1,5 @@
 import pandas as pd
-from sklearn.base import accuracy_score
-from sklearn.metrics import classification_report, f1_score, precision_score, recall_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, classification_report
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 
