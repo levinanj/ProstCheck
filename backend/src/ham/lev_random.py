@@ -48,11 +48,11 @@ outliers_remaining = (abs_z_scores_after > threshold).any(axis=1)
 print("Outliers remaining after handling:")
 print(data[outliers_remaining])
 
-# 4. Scaling the feature set (Simple Feature Scaling)
+# 4. Scaling the feature set (Simple Feature Scaling)(SEUSAI DENGAN PATH YANG ADA DI LOKAL)
 X = data.drop(columns=['id', 'diagnosis_result'])
 X_scaled = X / X.max()
 
-# Export the scaled feature set to a new CSV file (SEUSAI DENGAN PATH YANG ADA DI LOKAL)
+# Export the scaled feature set to a new CSV file
 X_scaled.to_csv(r"C:\Users\Hamid\OneDrive\Dokumen\GitHub\ProstCheck\backend\csv\scaled_features.csv", index=False)
 
 # 5. Target variable (already encoded)
@@ -98,5 +98,5 @@ def predict_new_data():
     result = 'M' if prediction[0] == 1 else 'B'
     print(f"\nThe predicted diagnosis result is: {result}")
 
-# Call the function to predict new data
+# Call the function to predIIict new data
 predict_new_data()
