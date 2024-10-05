@@ -2,9 +2,7 @@
 import pandas as pd
 from scipy import stats
 
-# Loading the dataset  C:\Users\Hamid\OneDrive\Dokumen\GitHub\ProstCheck\backend\csv\ke1.csv
-file_path = r"C:\Users\OneDrive\Hamid\Dokumen\GitHub\ProstCheck\backend\csv\ke1.csv" # bisa di sesuaikan ya
-data = pd.read_csv(file_path)
+data = pd.read_csv(r"C:\Users\Hamid\OneDrive\Dokumen\GitHub\ProstCheck\backend\csv\ke1.csv") #bisa di sesuaikan dengan path yang ada di lokal
 
 # 1. Map the diagnosis_result to numerical values: 'M' -> 1, 'B' -> 0
 data['diagnosis_result'] = data['diagnosis_result'].map({'M': 1, 'B': 0})
@@ -47,5 +45,5 @@ outliers_remaining = (abs_z_scores_after > threshold).any(axis=1)
 print("Outliers remaining after handling:")
 print(data[outliers_remaining])
 
-output_file_path = r"C:\Users\Hamid\Dokumen\GitHub\ProstCheck\backend\csv_clean_normalisasi\preprocessing_ke1.csv"
+output_file_path = r"C:\Users\Hamid\OneDrive\Dokumen\GitHub\ProstCheck\backend\csv_clean_normalisasi\preproc.csv"
 data.to_csv(output_file_path, index=False)

@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Read the data from the specified CSV file
-data = pd.read_csv(r"C:\Users\Hamid\Dokumen\GitHub\ProstCheck\backend\csv\preprocessing_ke1.csv")
+data = pd.read_csv(r"C:\Users\Hamid\OneDrive\Dokumen\GitHub\ProstCheck\backend\csv_clean_normalisasi\preproc.csv")
 
 # Scaling the feature set (Simple Feature Scaling)
 X = data.drop(columns=['id', 'diagnosis_result'])

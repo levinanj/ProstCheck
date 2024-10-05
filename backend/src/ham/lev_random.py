@@ -1,11 +1,11 @@
 import pandas as pd
 from scipy import stats
 from sklearn.model_selection import train_test_split
-from sklearn.naive_bayes import GaussianNB
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, classification_report
 
 # Load the dataset
-data = pd.read_csv(r"C:\Users\Hamid\OneDrive\Dokumen\GitHub\ProstCheck\backend\csv\ke1.csv") #bisa di sesuaikan dengan path yang ada di lokal
+data = pd.read_csv(r"C:\Users\Hamid\OneDrive\Dokumen\GitHub\ProstCheck\backend\csv\ke1.csv")
 
 # 1. Map the diagnosis_result to numerical values: 'M' -> 1, 'B' -> 0
 data['diagnosis_result'] = data['diagnosis_result'].map({'M': 1, 'B': 0})
@@ -48,7 +48,7 @@ outliers_remaining = (abs_z_scores_after > threshold).any(axis=1)
 print("Outliers remaining after handling:")
 print(data[outliers_remaining])
 
-# 4. Scaling the feature set (Simple Feature Scaling)(SEUSAI DENGAN PATH YANG ADA DI LOKAL)
+# 4. Scaling the feature set (Simple Feature Scaling)
 X = data.drop(columns=['id', 'diagnosis_result'])
 X_scaled = X / X.max()
 
@@ -61,8 +61,8 @@ y = data['diagnosis_result']
 # 6. Splitting the data for training and testing (80-20 split)
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=0)
 
-# 7. Naive Bayes Classification
-model = GaussianNB()
+# 7.  Bayes Classification
+model = RandomForestClassifier(random_state=0)
 model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
