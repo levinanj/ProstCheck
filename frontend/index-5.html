@@ -92,11 +92,6 @@
 				<div class="logo">
 					<a href="#"><img src="img/logoo.png" alt="" /></a>
 				</div>
-				<div class="right">
-					<div class="social">
-						<ul></ul>
-					</div>
-				</div>
 			</div>
 		</div>
 		<!-- /TOPBAR -->
@@ -121,7 +116,7 @@
 				<div class="dropdown_inner">
 					<ul class="anchor_nav">
 						<li class="current"><a href="#home">Home</a></li>
-						<li><a href="#contact">Diganosa</a></li>
+						<li><a href="#contact">Diagnosa</a></li>
 					</ul>
 				</div>
 			</div>
@@ -132,19 +127,19 @@
 		<div class="iknow_tm_sidebar_3">
 			<div class="inner">
 				<div class="image">
-					<div class="main" data-img-url="img/prost.webp"></div>
+					<div class="main" data-img-url="https://media.istockphoto.com/id/1156352527/id/foto/ujian-kesehatan-pria-dengan-dokter-atau-psikiater-yang-bekerja-dengan-pasien-memiliki.jpg?b=1&s=612x612&w=0&k=20&c=Helj_eCbGUO8kFvRO_CMvFDoxmHqzxq4Yzih4yeX5oc="></div>
 				</div>
 				<div class="menu scrollable">
 					<ul class="anchor_nav">
 						<li class="current">
 							<img class="svg" src="img/svg/squares.svg" alt="" />
 							<span>Home</span>
-							<a class="iknow_tm_full_link" href="index-5.html"></a>
+							<a class="iknow_tm_full_link" href="#home"></a>
 						</li>
 						<li>
 							<img class="svg" src="img/svg/letter.svg" alt="" />
-							<span>Hasil Diagnosa</span>
-							<a class="iknow_tm_full_link" href="#"></a>
+							<span>Diagnosa</span>
+							<a class="iknow_tm_full_link" href="#contact"></a>
 						</li>
 					</ul>
 				</div>
@@ -155,182 +150,83 @@
 		<!-- MAINPART -->
 		
 		<div class="iknow_tm_content_wrapper">
+			<!-- HERO -->
+			<div class="iknow_tm_hero_third" id="home">
+				<div class="background">
+					<div class="image" data-img-url="img/hero/8.jpg"></div>
+					<div class="overlay"></div>
+				</div>
+				<div class="content">
+					<h3 class="name">Selamat Datang</h3>
+					<p class="text">ProstCheck - Diagnose prostate cancer early and accurately</p>
+				</div>
+				
+			</div>
+			<!-- /HERO -->
+			
 
-
-			<!-- RESUME -->
-			<div class="iknow_tm_animate_section animated" id="home">
-				<div class="section_inner">
-					<div class="iknow_tm_resume">
-						<div class="iknow_tm_main_title">
-							<span></span>
-							<h3>Pasien Mengalami Kanker Prostat
-								<span style="border-bottom: 2px solid rgb(172, 58, 58); font-size: inherit; color: rgb(172, 58, 58);">Jinak (B)</span>
-							</h3>
-							<!-- <h3>Pasien Mengalami Kanker Prostat
-								<span style="border-bottom: 2px solid rgb(172, 58, 58); font-size: inherit; color: rgb(172, 58, 58);">Ganas (M)</span>
-							</h3> -->
-						</div>
+			<!-- CONTACT -->
+			<div class="iknow_tm_section_new contact" id="contact">
+				<div class="iknow_tm_contact">
+					<div class="iknow_tm_main_title">
+						<h3>BIODATA PASIEN</h3>
+					</div>
+					<div class="wrapper">
 						
-						<div class="resume_inner">
-							<div class="left">
-								<div class="info_list">
-									<div class="iknow_tm_resume_title">
-										<h3>Biodata Pasien</h3>
-										<span class="shape"></span>
+						<div class="right">
+							<div class="fields">
+								
+								<form action="#" method="post" class="contact_form" id="contact_form" autocomplete="off">
+									<div class="returnmessage" data-success="Your message has been received, We will contact you soon."></div>
+									<div class="empty_notice"><span>Isi Biodata Pasien</span></div>
+									<div class="input_list">
+										<ul>
+											<li><input id="name" type="text" placeholder="Nama Lengkap" required /></li>
+											<li><input id="weight" type="text" placeholder="Berat Badan" required /></li>
+											<li><input id="age" type="number" placeholder="Usia" required /></li>
+											<li><input id="height" type="text" placeholder="Tinggi Badan" required /></li>
+										</ul>
 									</div>
-									<ul>
-										<li>
-											<div class="list_inner">
-												<div class="short">
-													<div class="job">
-														<h3>Nama:</h3>
-														<span></span>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="list_inner">
-												<div class="short">
-													<div class="job">
-														<h3>Usia:</h3>
-														<span></span>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="list_inner">
-												<div class="short">
-													<div class="job">
-														<h3>Berat Badan:</h3>
-														<span></span>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="list_inner">
-												<div class="short">
-													<div class="job">
-														<h3>Tinggi Badan:</h3>
-														<span></span>
-													</div>
-												</div>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-
-							<div class="right">
-								<div class="info_list">
-									<div class="iknow_tm_resume_title">
-										<h3>Data Kesehatan</h3>
-										<span class="shape"></span>
+									<div class="iknow_tm_button">
+										<a id="send_message" href="#">Lanjutkan</a>
 									</div>
-									<ul>
-										<li>
-											<div class="list_inner">
-												<div class="short">
-													<div class="job">
-														<h3>Lingkar Radius:</h3>
-														<span></span>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="list_inner">
-												<div class="short">
-													<div class="job">
-														<h3>Tekstur:</h3>
-														<span></span>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="list_inner">
-												<div class="short">
-													<div class="job">
-														<h3>Perimeter:</h3>
-														<span></span>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="list_inner">
-												<div class="short">
-													<div class="job">
-														<h3>Luas Area:</h3>
-														<span></span>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="list_inner">
-												<div class="short">
-													<div class="job">
-														<h3>Kelembutan:</h3>
-														<span></span>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="list_inner">
-												<div class="short">
-													<div class="job">
-														<h3>Kepadatan:</h3>
-														<span></span>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="list_inner">
-												<div class="short">
-													<div class="job">
-														<h3>Simetri:</h3>
-														<span></span>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="list_inner">
-												<div class="short">
-													<div class="job">
-														<h3>Dimensi Fraktal:</h3>
-														<span></span>
-													</div>
-												</div>
-											</div>
-										</li>
-									</ul>
-									<div class="iknow_tm_button" style="margin-left: 250px; margin-top: 20px;">
-										<a href="index-5.html">Kembali</a>
-									</div>
-								</div>
-							</div>
+								</form>
 							
+								<!-- Form Kedua -->
+								<form action="submit.html" method="post" class="contact_form form-hidden" id="second_form" autocomplete="off">
+									<div class="returnmessage" data-success="Form kedua telah dikirim."></div>
+									<div class="input_list">
+										<ul>
+											<li><input id="name" type="text" placeholder="Lingkar Radius" required /></li>
+											<li><input id="name" type="text" placeholder="Tekstur" required /></li>
+											<li><input id="name" type="text" placeholder="Perimeter" required /></li>
+											<li><input id="name" type="text" placeholder="Luas Area" required /></li>
+											<li><input id="name" type="text" placeholder="Kelembutan" required /></li>
+											<li><input id="name" type="text" placeholder="Kepadatan" required /></li>
+											<li><input id="name" type="text" placeholder="Simetri" required /></li>
+											<li><input id="name" type="text" placeholder="Dimensi Fraktal" required /></li>
+										</ul>
+									</div>
+									<div class="iknow_tm_button">
+										<a id="back_button" >Kembali</a>
+									</div>
+									<div class="iknow_tm_button" >
+										<a id="submit" href="submit.html" >Submit</a>
+									</div>
+								</form>
 
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- /RESUME -->
-			
-			
+			<!-- /CONTACT -->
 			
 			<!-- COPYRIGHT -->
 			<div class="iknow_tm_copyright onepage extra">
 				<div class="inner">
 					<div class="left">
-						<p><a href="https://themeforest.net/user/marketify" target="_blank"></a></p>
+						<p></a></p>
 					</div>
 					<div class="right">
 						<ul>
@@ -359,11 +255,40 @@
 <!-- / WRAPPER ALL -->
 	
 <!-- SCRIPTS -->
+<script>
+	// Mendapatkan elemen form
+	const firstForm = document.getElementById('contact_form');
+	const secondForm = document.getElementById('second_form');
+	const sendMessageButton = document.getElementById('send_message');
+	const backButton = document.getElementById('back_button');
+
+	// Menangani klik tombol Lanjutkan pada form pertama
+	sendMessageButton.addEventListener('click', function(event) {
+		event.preventDefault(); // Mencegah pengiriman form
+
+		// Sembunyikan form pertama dan tampilkan form kedua
+		firstForm.classList.add('form-hidden');
+		secondForm.classList.remove('form-hidden');
+	});
+
+	// Menangani klik tombol Kembali pada form kedua
+	backButton.addEventListener('click', function() {
+		// Sembunyikan form kedua dan tampilkan form pertama
+		secondForm.classList.add('form-hidden');
+		firstForm.classList.remove('form-hidden');
+	});
+</script>
 <script src="js/jquery.js"></script>
 <!--[if lt IE 10]> <script type="text/javascript" src="js/ie8.js"></script> <![endif]-->	
 <script src="js/plugins.js"></script>
 <script src="js/init.js"></script>
 <!-- /SCRIPTS -->
 
+<style>
+	/* Sembunyikan form kedua secara default */
+	.form-hidden {
+		display: none;
+	}
+</style>
 </body>
 </html>
