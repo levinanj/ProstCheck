@@ -164,17 +164,12 @@
 						<div class="iknow_tm_main_title">
 							<span></span>
 							<h3>Pasien Mengalami Kanker Prostat
-								<span>{{diagnosis}} </span>
-								<span style="border-bottom: 2px solid {{ 'rgb(172, 58, 58)' if diagnosis == 1 else 'rgb(58, 172, 58)' }}; font-size: inherit; color: {{ 'rgb(172, 58, 58)' if diagnosis == 1 else 'rgb(58, 172, 58)' }};">
-									{{ 'Jahat (M)' if diagnosis == 1 else 'Jinak (B)' }}
-								</span>
+								<span>{{ diagnosis }}</span>
+								<h2>
+									{{ 'Ganas (M)' if diagnosis == '1' else 'Jinak (B)' }}
+								</h2>					
 							</h3>
-							
-							<!-- <h3>Pasien Mengalami Kanker Prostat
-								<span style="border-bottom: 2px solid rgb(172, 58, 58); font-size: inherit; color: rgb(172, 58, 58);">Ganas (M)</span>
-							</h3> -->
 						</div>
-						
 						<div class="resume_inner">
 							<div class="left">
 								<div class="info_list">

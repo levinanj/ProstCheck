@@ -9,10 +9,11 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Dataset yang dinormalisasi untuk model
-df_normalized = pd.read_csv('csv_clean_normalisasi/prostateCancerCleanNormalisasi.csv') 
+df_normalized = pd.read_csv(r'C:\Users\Hamid\OneDrive\Dokumen\GitHub\ProstCheck\flask\csv\prostateCancerCleanNormalisasi.csv') 
+
 
 # Dataset yang belum dinormalisasi untuk mengambil nilai maksimum
-df_cleaned = pd.read_csv('csv_clean_normalisasi/prostateCancerClean.csv') 
+df_cleaned = pd.read_csv(r'C:\Users\Hamid\OneDrive\Dokumen\GitHub\ProstCheck\flask\csv\prostateCancerClean.csv') 
 
 # Ambil nilai maksimum dari kolom numerik
 max_values = df_cleaned.drop(columns=['id', 'diagnosis_result']).max()
