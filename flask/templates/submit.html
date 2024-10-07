@@ -162,14 +162,14 @@
 				<div class="section_inner">
 					<div class="iknow_tm_resume">
 						<div class="iknow_tm_main_title">
-							<span></span>
-							<h3>Pasien Mengalami Kanker Prostat
-								<span>{{ diagnosis }}</span>
-								<h2>
+							<h3>
+								Pasien Mengalami Kanker Prostat 
+								<span style="color: {{ 'red' if diagnosis == '1' else 'green' }}; font-size: inherit;">
 									{{ 'Ganas (M)' if diagnosis == '1' else 'Jinak (B)' }}
-								</h2>					
+								</span>
 							</h3>
 						</div>
+						
 						<div class="resume_inner">
 							<div class="left">
 								<div class="info_list">
@@ -220,18 +220,60 @@
 										</li>
 									</ul>
 
-									<div class="model_evaluation">
-										<div class="iknow_tm_resume_title">
-											<h3>Model Terbaik: {{ best_model_name }}</h3>
-											<span class="shape"></span>
-										</div>
-										<ul>
-											<li>Akurasi: {{ (metrics_results[best_model_name]['Akurasi'] * 100) | round(2) }}%</li>
-											<li>Presisi: {{ (metrics_results[best_model_name]['Presisi'] * 100) | round(2) }}%</li>
-											<li>Recall: {{ (metrics_results[best_model_name]['Recall'] * 100) | round(2) }}%</li>
-											<li>F1 Score: {{ (metrics_results[best_model_name]['F1 Score'] * 100) | round(2) }}%</li>
-										</ul>										
+									<div class="iknow_tm_resume_title" style="margin-top: 30px;"></div>									
+									<div class="iknow_tm_main_title" style="display: flex; justify-content: space-between; align-items: center;">
+										<h3 style="margin: 0;">Model Terbaik: {{ best_model_name }}</h3>
 									</div>
+									<ul style="margin: 0; padding: 20;">
+										<li style="margin-bottom: 5px;">
+											<div class="list_inner" style="margin-bottom: 0;">
+												<div class="short">
+													<div class="job">
+														<span>Akurasi:</span>
+													</div>
+													<div class="year">
+														<span>{{ (metrics_results[best_model_name]['Akurasi'] * 100) | round(2) }}%</span>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li style="margin-bottom: 5px;">
+											<div class="list_inner" style="margin-bottom: 0;">
+												<div class="short">
+													<div class="job">
+														<span>Presisi:</span>
+													</div>
+													<div class="year">
+														<span>{{ (metrics_results[best_model_name]['Presisi'] * 100) | round(2) }}%</span>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li style="margin-bottom: 5px;">
+											<div class="list_inner" style="margin-bottom: 0;">
+												<div class="short">
+													<div class="job">
+														<span>Recall:</span>
+													</div>
+													<div class="year">
+														<span>{{ (metrics_results[best_model_name]['Recall'] * 100) | round(2) }}%</span>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li style="margin-bottom: 5px;">
+											<div class="list_inner" style="margin-bottom: 0;">
+												<div class="short">
+													<div class="job">
+														<span>F1 Score:</span>
+													</div>
+													<div class="year">
+														<span>{{ (metrics_results[best_model_name]['F1 Score'] * 100) | round(2) }}%</span>
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
 									
 								</div>
 							</div>
