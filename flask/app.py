@@ -4,7 +4,7 @@ from model import train_models, predict_diagnosis
 app = Flask(__name__)
 
 # Latih model
-best_model, max_values = train_models()
+best_model, max_values,_,_ = train_models()
 
 @app.route('/')
 def home():
@@ -59,6 +59,33 @@ def prediction():
     return render_template('prediction.html')
 
 
+# @app.route('/hasil_prediksi', methods=['GET'])
+# def hasil_prediksi():
+#     nama = request.args.get('nama')
+#     berat_badan = request.args.get('berat_badan')
+#     tinggi_badan = request.args.get('tinggi_badan')
+#     umur = request.args.get('umur')
+#     diagnosis = request.args.get('diagnosis')
+#     radius = request.args.get('radius')
+#     texture = request.args.get('texture')
+#     perimeter = request.args.get('perimeter')
+#     area = request.args.get('area')
+#     smoothness = request.args.get('smoothness')
+#     compactness = request.args.get('compactness')
+#     symmetry = request.args.get('symmetry')
+#     fractal_dimension = request.args.get('fractal_dimension')
+
+#     return render_template('submit.html',
+#                            nama = nama,
+#                             berat_badan = berat_badan,
+#                             tinggi_badan = tinggi_badan,
+#                             umur = umur,
+#                            diagnosis=diagnosis, 
+#                            radius=radius, texture=texture, 
+#                            perimeter=perimeter, area=area, 
+#                            smoothness=smoothness, compactness=compactness, 
+#                            symmetry=symmetry, fractal_dimension=fractal_dimension)
+
 @app.route('/hasil_prediksi', methods=['GET'])
 def hasil_prediksi():
     nama = request.args.get('nama')
@@ -75,16 +102,22 @@ def hasil_prediksi():
     symmetry = request.args.get('symmetry')
     fractal_dimension = request.args.get('fractal_dimension')
 
+    # Ambil informasi model dan metrik dari hasil training
+    _, _, best_model_name, metrics_results = train_models()
+
     return render_template('submit.html',
-                           nama = nama,
-                            berat_badan = berat_badan,
-                            tinggi_badan = tinggi_badan,
-                            umur = umur,
+                           nama=nama,
+                           berat_badan=berat_badan,
+                           tinggi_badan=tinggi_badan,
+                           umur=umur,
                            diagnosis=diagnosis, 
                            radius=radius, texture=texture, 
                            perimeter=perimeter, area=area, 
                            smoothness=smoothness, compactness=compactness, 
-                           symmetry=symmetry, fractal_dimension=fractal_dimension)
+                           symmetry=symmetry, fractal_dimension=fractal_dimension,
+                           best_model_name=best_model_name,
+                           metrics_results=metrics_results)
+
 
 
 if __name__ == '__main__':

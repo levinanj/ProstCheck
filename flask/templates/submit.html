@@ -219,6 +219,20 @@
 											</div>
 										</li>
 									</ul>
+
+									<div class="model_evaluation">
+										<div class="iknow_tm_resume_title">
+											<h3>Model Terbaik: {{ best_model_name }}</h3>
+											<span class="shape"></span>
+										</div>
+										<ul>
+											<li>Akurasi: {{ (metrics_results[best_model_name]['Akurasi'] * 100) | round(2) }}%</li>
+											<li>Presisi: {{ (metrics_results[best_model_name]['Presisi'] * 100) | round(2) }}%</li>
+											<li>Recall: {{ (metrics_results[best_model_name]['Recall'] * 100) | round(2) }}%</li>
+											<li>F1 Score: {{ (metrics_results[best_model_name]['F1 Score'] * 100) | round(2) }}%</li>
+										</ul>										
+									</div>
+									
 								</div>
 							</div>
 

@@ -30,6 +30,32 @@ models = {
 }
 
 # Latih model dan hitung akurasi
+# def train_models():
+#     metrics_results = {}
+#     for model_name, model in models.items():
+#         model.fit(X_train, y_train)
+#         y_pred = model.predict(X_test)
+        
+#         accuracy = accuracy_score(y_test, y_pred)
+#         precision = precision_score(y_test, y_pred)
+#         recall = recall_score(y_test, y_pred)
+#         f1 = f1_score(y_test, y_pred)
+        
+#         metrics_results[model_name] = {
+#             'Akurasi': accuracy,
+#             'Presisi': precision,
+#             'Recall': recall,
+#             'F1 Score': f1,
+#             'Model': model
+#         }
+    
+#     # Rekomendasi model terbaik berdasarkan akurasi tertinggi
+#     best_model_name = max(metrics_results, key=lambda x: metrics_results[x]['Akurasi'])
+#     best_model = metrics_results[best_model_name]['Model']
+    
+#     return best_model, max_values
+
+# Latih model dan hitung akurasi
 def train_models():
     metrics_results = {}
     for model_name, model in models.items():
@@ -53,7 +79,8 @@ def train_models():
     best_model_name = max(metrics_results, key=lambda x: metrics_results[x]['Akurasi'])
     best_model = metrics_results[best_model_name]['Model']
     
-    return best_model, max_values
+    return best_model, max_values, best_model_name, metrics_results
+
 
 # Fungsi prediksi berdasarkan input pengguna
 def predict_diagnosis(model, input_data, max_values):
